@@ -1,0 +1,23 @@
+.movies-container {
+  border: 5px solid white;
+  display: grid; 
+  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, auto));
+  padding: 5px;
+  place-items: center;
+}
+
+.movie-card {
+  border: 5px solid blue;
+}
+
+.movie-card img {
+  object-fit: cover;
+  width: clamp(240px, 100%, 350px);
+}
+
+.movies-container p {
+  color: aliceblue;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,8 @@
+.App {
+  box-sizing: border-box;
+  background-color: red;
+  width: 100%;
+  min-width: 375px;
+  padding: 0 clamp(0px, 10%, 150px);
+}
+

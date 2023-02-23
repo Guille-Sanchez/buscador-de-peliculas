@@ -1,0 +1,11 @@
+form {
+  background-color: rgb(158, 201, 239);
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+form > input {
+  width: 50%;
+}
