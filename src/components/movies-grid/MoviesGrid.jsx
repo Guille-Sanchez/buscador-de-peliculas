@@ -6,7 +6,7 @@ function MoviesGrid ({ queriedMovie }) {
       {queriedMovie.map((movie) => {
         return (
           <div className='movie-card' key={movie.id}>
-            <p>{movie.title}</p>
+            <p className='title'>{movie.title}</p>
             <img src={movie.poster} alt={movie.title} />
             <p>{movie.year}</p>
           </div>
@@ -17,8 +17,3 @@ function MoviesGrid ({ queriedMovie }) {
 }
 
 export default MoviesGrid
-/*
-              <div>{movie.title}</div>
-              <img src={movie.poster} alt={movie.title} />
-              <div>{movie.year}</div>
-*/
