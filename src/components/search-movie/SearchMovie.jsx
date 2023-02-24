@@ -2,7 +2,7 @@ import { useState } from 'react'
 import useMovieValidation from '../../hooks/useMovieValidation'
 import './searchMovie.css'
 
-function SearchMovie ({ setMovies }) {
+function SearchMovie ({ setMovieSearch }) {
   const [query, setQuery] = useState('')
   const { handleOnBlur, handleOnFocus, error, focus } = useMovieValidation({ query })
 
@@ -15,7 +15,8 @@ function SearchMovie ({ setMovies }) {
 
   function handleOnSubmit (e) {
     e.preventDefault()
-    setMovies(() => query)
+    if (error) return
+    setMovieSearch(() => query)
   }
 
   return (

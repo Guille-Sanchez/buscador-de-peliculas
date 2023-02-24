@@ -1,9 +1,9 @@
 import './moviesGrid.css'
 
-function MoviesGrid ({ queriedMovie }) {
+function MoviesGrid ({ movies }) {
   return (
     <div className='movies-container'>
-      {queriedMovie.map((movie) => {
+      {movies.map((movie) => {
         return (
           <div className='movie-card' key={movie.id}>
             <p className='title'>{movie.title}</p>
