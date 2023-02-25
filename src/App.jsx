@@ -2,11 +2,15 @@ import './App.css'
 import MoviesGrid from './components/movies-grid/MoviesGrid'
 import SearchMovie from './components/search-movie/SearchMovie'
 import { useState } from 'react'
+import SortMovies from './components/sortMovies/SortMovies'
+import useSortingMovie from './hooks/useSortingMovie'
 import useSearchingMovie from './hooks/useSearchingMovie'
 
 function App () {
   const [movieSearch, setMovieSearch] = useState('')
   const movies = useSearchingMovie({ movieSearch })
+  const [sortBy, setSortBy] = useState('')
+  const sortedMovies = useSortingMovie({ movieSearch, movies, sortBy })
 
   return (
     <div className='buscador'>
@@ -15,9 +19,12 @@ function App () {
       </header>
 
       <main className='App'>
-        <SearchMovie setMovieSearch={setMovieSearch} />
+        <section style={{ display: 'flex', alignItems: 'flex-start' }}>
+          <SearchMovie setMovieSearch={setMovieSearch} />
+          <SortMovies setSortBy={setSortBy} />
+        </section>
         <section style={{ backgroundColor: 'green' }}>
-          {movies && <MoviesGrid movies={movies} />}
+          {sortedMovies && <MoviesGrid movies={sortedMovies} />}
         </section>
       </main>
 

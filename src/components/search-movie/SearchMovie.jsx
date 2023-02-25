@@ -27,12 +27,12 @@ function SearchMovie ({ setMovieSearch }) {
         <div>
           <input
             autoComplete='off'
-            placeholder='Avengers, Batman, La La Land: Ciudad de los sueños...'
+            id='movie'
             onFocus={handleOnFocus}
             onBlur={handleOnBlur}
             onChange={handleOnChange}
+            placeholder='Avengers, Batman, La La Land: Ciudad de los sueños...'
             type='text'
-            id='movie'
             value={query}
           />
           {(error && focus) && <p>{error}</p>}
