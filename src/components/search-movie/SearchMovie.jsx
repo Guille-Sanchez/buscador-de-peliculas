@@ -21,8 +21,7 @@ function SearchMovie ({ setMovieSearch }) {
 
   return (
     <>
-
-      <form onSubmit={handleOnSubmit}>
+      <form onSubmit={handleOnSubmit} className='searchForm'>
         <label htmlFor='movie'>Ingrese una pelicula: </label>
         <div>
           <input
@@ -31,11 +30,11 @@ function SearchMovie ({ setMovieSearch }) {
             onFocus={handleOnFocus}
             onBlur={handleOnBlur}
             onChange={handleOnChange}
-            placeholder='Avengers, Batman, La La Land: Ciudad de los sueños...'
+            placeholder='Avengers, Batman, La La Land: Ciuda...'
             type='text'
             value={query}
           />
-          {(error && focus) && <p>{error}</p>}
+          {(error && focus) && <p className='input-error'>{error}</p>}
         </div>
       </form>
     </>

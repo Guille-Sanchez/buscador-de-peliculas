@@ -14,22 +14,22 @@ function App () {
 
   return (
     <div className='buscador'>
-      <header style={{ backgroundColor: 'white', margin: '0', padding: '0' }}>
+      <header className='heading'>
         <h1 style={{ margin: '0', padding: '0' }}>Buscador de Peliculas</h1>
       </header>
 
       <main className='App'>
-        <section style={{ display: 'flex', alignItems: 'flex-start' }}>
+        <section className='search-sort-section'>
           <SearchMovie setMovieSearch={setMovieSearch} />
           <SortMovies setSortBy={setSortBy} />
         </section>
-        <section style={{ backgroundColor: 'green' }}>
+        <section className='movies-grid'>
           {sortedMovies && <MoviesGrid movies={sortedMovies} />}
         </section>
       </main>
 
       <footer>
-        website created by: <a href='https://github.com/Guille-Sanchez'>Chicho</a>
+        <p>Website created by: <a href='https://github.com/Guille-Sanchez'>Chicho</a></p>
       </footer>
     </div>
   )

@@ -1,8 +1,54 @@
 .App {
   box-sizing: border-box;
-  background-color: red;
   width: 100%;
   min-width: 375px;
-  padding: 0 clamp(0px, 10%, 150px);
+  padding: 0 clamp(0px, 10%, 150px) 25px;
 }
 
+.heading {
+  background-color: #15202b;
+  color: #e4e6eb;
+  font-size: 15px !important;
+  padding: 25px 0 25px clamp(0px, 10%, 150px);
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
+  background-color: #e4e6eb;
+  color: #15202b;
+}
+
+footer a {
+  text-decoration: none;
+  color: #15202b;
+}
+
+footer a:hover {
+  cursor: pointer;
+}
+
+.search-sort-section {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px 0;
+}
+
+.movies-grid {
+  box-sizing: border-box;
+
+}
+
+@media (min-width: 800px) {
+  .search-sort-section {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .heading {
+    padding: 30px inherit;
+    font-size: clamp(0.9375rem, 0.7102rem + 0.4545vw, 1.25rem) !important;
+  }
+}
