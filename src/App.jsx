@@ -10,7 +10,7 @@ function App () {
   const [movieSearch, setMovieSearch] = useState('')
   const movies = useSearchingMovie({ movieSearch })
   const [sortBy, setSortBy] = useState('')
-  const sortedMovies = useSortingMovie({ movieSearch, movies, sortBy })
+  const sortedMovies = useSortingMovie({ movies, sortBy })
 
   return (
     <div className='buscador'>
