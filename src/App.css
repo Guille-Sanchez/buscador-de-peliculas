@@ -12,9 +12,14 @@
   padding: 25px 0 25px clamp(0px, 10%, 150px);
 }
 
+footer {
+  margin-top: 25px;
+}
+
 footer p {
   margin: 0;
   padding: 0;
+  padding: 20px;
   background-color: #e4e6eb;
   color: #15202b;
 }

@@ -1,33 +1,18 @@
-import { useEffect, useState } from 'react'
-import moviesWithResults from '../mockups/moviesWithResults.json'
-
-function giveFormatToMovies ({ moviesWithResults }) {
-  return moviesWithResults.Search.map((movieSearch) => {
-    return (
-      {
-        title: movieSearch.Title,
-        year: movieSearch.Year,
-        poster: movieSearch.Poster,
-        id: movieSearch.imdbID
-      }
-    )
-  })
-}
-
-function queryMovies ({ movieSearch }) {
-  // const moviesWithResults = fetch(movieSearch)
-  if (movieSearch === 'avengers') { // Borrar una vez acabado el mockup. Solo sirve para no desplegar las peliculas con input vacio
-    return giveFormatToMovies({ moviesWithResults })
-  }
-}
+import { useEffect, useRef, useState } from 'react'
+import { getMovieInfo } from '../services/getMovieInfo'
 
 function useSearchingMovie ({ movieSearch }) {
   const [movies, setMovies] = useState('')
+  const loading = useRef(true)
 
   useEffect(() => {
     let subscribed = true
-    if (subscribed) {
-      setMovies(() => queryMovies({ movieSearch }))
+    if (subscribed && movieSearch) {
+      (async () => {
+        const movieInfo = await getMovieInfo({ movieSearch, loading })
+        setMovies(() => movieInfo)
+      })()
+      setMovies(() => 'No Results Found')
     }
 
     return () => {
@@ -35,6 +20,6 @@ function useSearchingMovie ({ movieSearch }) {
     }
   }, [movieSearch])
 
-  return movies
+  return { movies, loading }
 }
 export default useSearchingMovie

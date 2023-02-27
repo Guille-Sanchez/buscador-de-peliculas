@@ -5,12 +5,13 @@ import { useState } from 'react'
 import SortMovies from './components/sortMovies/SortMovies'
 import useSortingMovie from './hooks/useSortingMovie'
 import useSearchingMovie from './hooks/useSearchingMovie'
+import NoResults from './components/noResults/NoResults'
 
 function App () {
   const [movieSearch, setMovieSearch] = useState('')
-  const movies = useSearchingMovie({ movieSearch })
+  const { movies, loading } = useSearchingMovie({ movieSearch })
   const [sortBy, setSortBy] = useState('')
-  const sortedMovies = useSortingMovie({ movies, sortBy })
+  const sortedMovies = useSortingMovie({ movies, sortBy, loading })
 
   return (
     <div className='buscador'>
@@ -23,9 +24,15 @@ function App () {
           <SearchMovie setMovieSearch={setMovieSearch} />
           <SortMovies setSortBy={setSortBy} />
         </section>
-        <section className='movies-grid'>
-          {sortedMovies && <MoviesGrid movies={sortedMovies} />}
-        </section>
+        {
+          sortedMovies === 'No Results Found'
+            ? <NoResults />
+            : (
+              <section className='movies-grid'>
+                <MoviesGrid movies={sortedMovies} />
+              </section>
+              )
+        }
       </main>
 
       <footer>

@@ -27,14 +27,14 @@ function reArrangeMovies (movies, sortBy) {
   }
 }
 
-function useSortingMovie ({ movies, sortBy }) {
+function useSortingMovie ({ movies, sortBy, loading }) {
   const [sortedMovies, setSortedMovies] = useState('')
 
   useEffect(() => {
     let subscribed = true
 
     if (subscribed) {
-      if (!movies) return
+      if (loading.current || movies === 'No Results Found') return setSortedMovies(() => movies)
       setSortedMovies(() => reArrangeMovies([...movies], sortBy))
     }
 
