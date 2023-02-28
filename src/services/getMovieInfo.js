@@ -11,14 +11,14 @@ function giveFormatToMovies ({ data }) {
   })
 }
 
-export async function getMovieInfo ({ movieSearch, loading }) {
-  loading.current = true
+export async function getMovieInfo ({ movieSearch, setLoading }) {
+  setLoading(() => true)
   const API_KEY = 'bf561cf1'
   const movieInfo = fetch(`https://www.omdbapi.com/?s=${movieSearch}&apikey=${API_KEY}`)
     .then((response) => response.json())
     .then((data) => {
       if (data.Response === 'False') return 'No Results Found'
-      loading.current = false
+      setLoading(() => false)
       return giveFormatToMovies({ data })
     })
   return movieInfo

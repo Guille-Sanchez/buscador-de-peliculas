@@ -34,15 +34,16 @@ function useSortingMovie ({ movies, sortBy, loading }) {
     let subscribed = true
 
     if (subscribed) {
-      if (!loading.current && movies === 'No Results Found') return setSortedMovies(() => 'Loading')
-      else if (movies === 'No Results Found') return setSortedMovies(() => 'No Results Found')
+      if (loading && movies !== 'No Results Found') {
+        return setSortedMovies(() => 'Loading')
+      } else if (movies === 'No Results Found') return setSortedMovies(() => 'No Results Found')
       setSortedMovies(() => reArrangeMovies([...movies], sortBy))
     }
 
     return () => {
       subscribed = false
     }
-  }, [movies, sortBy])
+  }, [movies, sortBy, loading])
 
   return sortedMovies
 }
