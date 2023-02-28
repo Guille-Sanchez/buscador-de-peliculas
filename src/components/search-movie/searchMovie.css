@@ -25,6 +25,12 @@
   padding-left: 25px;
 }
 
+.searchForm input {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .searchForm label, input {
   box-sizing: border-box;
   color: #e4e6eb;
