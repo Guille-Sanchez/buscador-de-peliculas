@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import './searchMovie.css'
 import { validateMovieSearch } from '../../logic/validateMovieSearch'
+import debounce from 'just-debounce-it'
 
 function SearchMovie ({ setMovieSearch }) {
   const [query, setQuery] = useState('')
   const [error, setError] = useState('')
+
+  const debounceMovie = useCallback(
+    debounce((newQuery) => {
+      setMovieSearch(() => newQuery)
+    }, 300), [])
 
   function handleOnChange (e) {
     e.preventDefault()
@@ -14,7 +20,7 @@ function SearchMovie ({ setMovieSearch }) {
     if (ErrorAfterValidation.includes('espacio')) return
     setQuery(() => newQuery)
     if (ErrorAfterValidation) return
-    setMovieSearch(() => newQuery)
+    debounceMovie(newQuery)
   }
 
   function handleOnSubmit (e) {
@@ -24,7 +30,7 @@ function SearchMovie ({ setMovieSearch }) {
   return (
     <>
       <form onSubmit={handleOnSubmit} className='searchForm'>
-        <label htmlFor='movie'>Ingrese una pelicula: </label>
+        <label htmlFor='movie'>Ingrese una pelicula:</label>
         <div>
           <input
             autoComplete='off'
