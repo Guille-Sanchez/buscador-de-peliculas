@@ -10,9 +10,9 @@ function useSearchingMovie ({ movieSearch }) {
     if (subscribed && movieSearch) {
       (async () => {
         const movieInfo = await getMovieInfo({ movieSearch, loading })
+        if (!movieInfo) setMovies(() => 'No Results Found')
         setMovies(() => movieInfo)
       })()
-      setMovies(() => 'No Results Found')
     }
 
     return () => {

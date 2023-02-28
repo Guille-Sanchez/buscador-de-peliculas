@@ -5,7 +5,7 @@ import { useState } from 'react'
 import SortMovies from './components/sortMovies/SortMovies'
 import useSortingMovie from './hooks/useSortingMovie'
 import useSearchingMovie from './hooks/useSearchingMovie'
-import NoResults from './components/noResults/NoResults'
+import NoResults from './components/loading-and-no-results/NoResults'
 
 function App () {
   const [movieSearch, setMovieSearch] = useState('')
@@ -24,6 +24,7 @@ function App () {
           <SearchMovie setMovieSearch={setMovieSearch} />
           <SortMovies setSortBy={setSortBy} />
         </section>
+
         {
           sortedMovies === 'No Results Found'
             ? <NoResults />

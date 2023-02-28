@@ -1,0 +1,21 @@
+.loading {
+  align-items: center;
+  background-color: #15202b;
+  border: #e4e6eb solid 1px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #e4e6eb;
+  display: grid;
+  height: 250px;
+  padding: 25px 0;
+  text-align: center;
+  width: clamp(300px, 300px + 10vw, 500px);
+}
+
+@media (min-width: 1000px) {
+  .loading{
+    height: clamp(350px, 350px + 8vw, 700px);
+    margin-top: 40px;
+    padding: 50px 0;
+  }
+}

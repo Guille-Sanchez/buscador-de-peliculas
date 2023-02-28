@@ -12,7 +12,6 @@ function giveFormatToMovies ({ data }) {
 }
 
 export async function getMovieInfo ({ movieSearch, loading }) {
-  console.log('get movie info', movieSearch)
   loading.current = true
   const API_KEY = 'bf561cf1'
   const movieInfo = fetch(`https://www.omdbapi.com/?s=${movieSearch}&apikey=${API_KEY}`)
